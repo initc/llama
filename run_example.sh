@@ -1,0 +1,1 @@
+torchrun example.py --ckpt_dir /data/shenqian/llama/7B/ --tokenizer_path /data/shenqian/llama/tokenizer.model
