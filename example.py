@@ -20,6 +20,8 @@ def setup_model_parallel() -> Tuple[int, int]:
     local_rank = int(os.environ.get("LOCAL_RANK", -1))
     world_size = int(os.environ.get("WORLD_SIZE", -1))
 
+    print(f"local_rank = {local_rank}, world_size = {world_size}")
+
     torch.distributed.init_process_group("nccl")
     initialize_model_parallel(world_size)
     torch.cuda.set_device(local_rank)
@@ -96,15 +98,13 @@ Sentiment: Neutral
 ###
 Tweet: "This new music video was incredibile"
 Sentiment:""",
-        """Translate English to French:
+        """Translate chinese to english:
 
-sea otter => loutre de mer
+苹果 => apple
 
-peppermint => menthe poivrée
+我想吃饭 => i want to eat something
 
-plush girafe => girafe peluche
-
-cheese =>""",
+你们在做什么呢？是不是有好东西分享？ =>""",
     ]
     results = generator.generate(
         prompts, max_gen_len=256, temperature=temperature, top_p=top_p

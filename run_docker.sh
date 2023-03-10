@@ -1,0 +1,1 @@
+sudo nvidia-docker run -it -v /data:/data --name pytorch pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime bash
